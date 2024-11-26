@@ -12,10 +12,11 @@ function Profile(props) {
   const [changedepartment, setChangedepartment] = useState(false);
   const [changepassword, setChangepassword] = useState(false);
   const [changeyear, setChangeyear] = useState(false);
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
 
   const handleupdate = async (type, val) => {
     const response = await fetch(
-      "https://nvdqwpdb-8000.inc1.devtunnels.ms/users/update",
+      `${serv_addr}/users/update`,
       {
         method: "POST",
         headers: {
@@ -42,7 +43,7 @@ function Profile(props) {
 
   const handleremove = async () => {
     const response = await fetch(
-      "https://nvdqwpdb-8000.inc1.devtunnels.ms/removeprofile",
+      `${serv_addr}/removeprofile`,
       {
         method: "POST",
         headers: {

@@ -4,11 +4,12 @@ import { MyContext } from '../main';
 const FetchAndDisplayData = (props) => {
   const [data, setData] = useState([]);
   const {adminemails} = useContext(MyContext)
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://nvdqwpdb-8000.inc1.devtunnels.ms/historyusers', {
+        const response = await fetch(`${serv_addr}/historyusers`, {
             method: "GET", 
             headers: {
                 "Content-Type": "application/json"
@@ -26,7 +27,7 @@ const FetchAndDisplayData = (props) => {
       }
     };
     fetchData();
-  }, []);
+  }, [serv_addr]);
 
   if(!adminemails.includes(props.details.email)){
     return (

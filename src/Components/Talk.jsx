@@ -10,9 +10,11 @@ function Talk(props) {
   const [Socket, setSocket] = useState(null);
   const [loading, setLoading] = useState(true);
   const {adminemails} = useContext(MyContext)
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
+  const webs_addr = import.meta.env.VITE_WEBS_ADDR
 
   useEffect(() => {
-    const ws = new WebSocket("wss://nvdqwpdb-8000.inc1.devtunnels.ms/");
+    const ws = new WebSocket(`${webs_addr}`);
     setSocket(ws);
     ws.onmessage = async (event) => {
       const data = await JSON.parse(event.data);
@@ -26,7 +28,7 @@ function Talk(props) {
   useEffect(() => {
     const getdata = async () => {
       const response = await fetch(
-        "https://nvdqwpdb-8000.inc1.devtunnels.ms/talks/getchat",
+        `${serv_addr}/talks/getchat`,
         {
           method: "POST",
         }
@@ -38,7 +40,7 @@ function Talk(props) {
       setLoading(false);
     };
     getdata();
-  }, []);
+  }, [serv_addr]);
 
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevents the page from refreshing
@@ -52,7 +54,7 @@ function Talk(props) {
         imageform.append("name", props.details.name);
         imageform.append("image", file);
         const response = await fetch(
-          "https://nvdqwpdb-8000.inc1.devtunnels.ms/talks/imagestore",
+          `${serv_addr}/talks/imagestore`,
           {
             method: "POST",
             body: imageform,
@@ -86,7 +88,7 @@ function Talk(props) {
   const handleDelete = async(posts, index)=>{
     alert("Do You really want to delete this?")
     const response = await fetch(
-      "https://nvdqwpdb-8000.inc1.devtunnels.ms/talks/deletemessage",
+      `${serv_addr}/talks/deletemessage`,
       {
         method: "POST", 
         headers: {

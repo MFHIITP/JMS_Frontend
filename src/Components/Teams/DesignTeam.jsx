@@ -10,11 +10,12 @@ function DesignTeam(props) {
   const [Degree, setDegree] = useState("");
   const [linkedIn, setLinkedIn] = useState("");
   const {adminemails} = useContext(MyContext);
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
 
   useEffect(() => {
     const devteamcall = async () => {
       const response = await fetch(
-        "https://nvdqwpdb-8000.inc1.devtunnels.ms/designteam/getdedignteamdata",
+        `${serv_addr}/designteam/getdedignteamdata`,
         {
           method: "GET",
           headers: {
@@ -28,7 +29,7 @@ function DesignTeam(props) {
       data.sort((a, b) => {return priorityOrder.indexOf(a.position) - priorityOrder.indexOf(b.position)});
     };
     devteamcall();
-  }, []);
+  }, [serv_addr]);
 
   const resetForm = () => {
     setPosition("");
@@ -41,7 +42,7 @@ function DesignTeam(props) {
 
   const handleSubmit = async () => {
     const response = await fetch(
-      "https://nvdqwpdb-8000.inc1.devtunnels.ms/designteam/adddesignperson",
+      `${serv_addr}/designteam/adddesignperson`,
       {
         method: "POST",
         headers: {

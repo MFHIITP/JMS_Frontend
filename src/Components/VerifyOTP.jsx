@@ -4,6 +4,7 @@ function Otpverify() {
   const [otp, setOtp] = useState("");
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false)
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
 
   useEffect(() => {
     const output = async () => {
@@ -23,7 +24,7 @@ function Otpverify() {
     setLoading(true);
     event.preventDefault();
     try {
-      const response = await fetch("https://nvdqwpdb-8000.inc1.devtunnels.ms/users/verifyOTP", {
+      const response = await fetch(`${serv_addr}/users/verifyOTP`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

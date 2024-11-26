@@ -6,11 +6,12 @@ function QueryBox() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
   const handlesubmit = async (e) => {
     e.preventDefault();
     setSending(true)
     try {
-      const response = await fetch("https://nvdqwpdb-8000.inc1.devtunnels.ms/api/sendquery", {
+      const response = await fetch(`${serv_addr}/api/sendquery`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

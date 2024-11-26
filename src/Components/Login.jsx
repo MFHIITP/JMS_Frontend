@@ -4,11 +4,12 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    const response = await fetch("https://nvdqwpdb-8000.inc1.devtunnels.ms/login", {
+    const response = await fetch(`${serv_addr}/login`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -24,7 +25,7 @@ function Login() {
       const data = await response.json();
       const token = data.token;
 
-      const responsed = await fetch("https://nvdqwpdb-8000.inc1.devtunnels.ms/checktoken", {
+      const responsed = await fetch(`${serv_addr}/checktoken`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,10 +37,14 @@ function Login() {
 
       if (responsed.status === 200) {
         setLoading(false);
-        // window.location.href = '/';
+        document.cookie = `Token=${data.token}; path=/; domain=${window.location.hostname}; secure=true; sameSite=none;`
+        document.cookie = `ProfileInfo=${encodeURIComponent(`j:` + JSON.stringify(data.profileinfo))};  path=/; domain=${window.location.hostname}; secure=true; sameSite=none;`
+        window.location.href = '/';
       }
     } else {
       setLoading(false);
+      setEmail('')
+      setPassword('')
       const data = await response.json();
       alert(data.message);
     }

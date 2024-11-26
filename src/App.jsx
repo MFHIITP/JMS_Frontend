@@ -1,8 +1,7 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 
-// Lazy Loading Components
 const Footer = lazy(() => import("./Components/Footer"));
 const Index = lazy(() => import("./Components/Index"));
 const Login = lazy(() => import("./Components/Login"));
@@ -24,9 +23,7 @@ const ReadBook = lazy(() => import("./Components/ReadBook"));
 const Popping = lazy(() => import("./Components/Popping"));
 const DailyProblems = lazy(() => import("./Components/DailyProblems"));
 const ExecutiveTeam = lazy(() => import("./Components/Teams/ExecutiveTeam"));
-const DevelopmentTeam = lazy(() =>
-  import("./Components/Teams/DevelopmentTeam")
-);
+const DevelopmentTeam = lazy(() => import("./Components/Teams/DevelopmentTeam"));
 const PayPal = lazy(()=> import ("./Components/PayPalComponent"))
 const QRPage = lazy(()=> import ("./Components/QRPage"))
 const CoreTeam = lazy(()=> import ("./Components/Teams/CoreTeam"))
@@ -35,18 +32,10 @@ const ContentTeam = lazy(() => import("./Components/Teams/ContentTeam"));
 const ActivityTeam = lazy(() => import("./Components/Teams/ActivityTeam"));
 const PRTeam = lazy(() => import("./Components/Teams/PRTeam"));
 const Treasury = lazy(() => import("./Components/Teams/Treasury"));
-const AppointmentCommittee = lazy(() =>
-  import("./Components/Teams/AppointmentCommittee")
-);
-const DisciplinaryCommittee = lazy(() =>
-  import("./Components/Teams/DisciplinaryCommittee")
-);
-const LiveUsers = lazy(() =>
-  import("./Components/Live_Usere")
-);
-const HistoryUsers = lazy(() =>
-  import("./Components/History_Users")
-);
+const AppointmentCommittee = lazy(() => import("./Components/Teams/AppointmentCommittee"));
+const DisciplinaryCommittee = lazy(() => import("./Components/Teams/DisciplinaryCommittee"));
+const LiveUsers = lazy(() => import("./Components/Live_Usere"));
+const HistoryUsers = lazy(() => import("./Components/History_Users"));
 const DonateUs = lazy(()=> import ("./Components/DonateUs"));
 import Cookies from "js-cookie";
 

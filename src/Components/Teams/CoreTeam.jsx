@@ -10,11 +10,12 @@ function CoreTeam(props) {
   const [Degree, setDegree] = useState("");
   const [linkedIn, setLinkedIn] = useState("");
   const { adminemails } = useContext(MyContext);
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
 
   useEffect(() => {
     const devteamcall = async () => {
       const response = await fetch(
-        "https://nvdqwpdb-8000.inc1.devtunnels.ms/coreteam/getcoreteamdata",
+        `${serv_addr}/coreteam/getcoreteamdata`,
         {
           method: "GET",
           headers: {
@@ -45,7 +46,7 @@ function CoreTeam(props) {
       setTeam([...priorityMembers, ...otherMembers]);
     };
     devteamcall();
-  }, []);
+  }, [serv_addr]);
 
   const resetForm = () => {
     setPosition("");
@@ -58,7 +59,7 @@ function CoreTeam(props) {
 
   const handleSubmit = async () => {
     const response = await fetch(
-      "https://nvdqwpdb-8000.inc1.devtunnels.ms/coreteam/addcoreperson",
+      `${serv_addr}/coreteam/addcoreperson`,
       {
         method: "POST",
         headers: {

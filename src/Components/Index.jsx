@@ -12,10 +12,11 @@ function Index(props) {
   const [noticedrop, setNoticedrop] = useState(false);
   const [coreTeamDropdownOpen, setcoreTeamDropdownOpen] = useState(false);
   const { adminemails } = useContext(MyContext);
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
 
   const handleLogout = async () => {
     const response = await fetch(
-      "https://nvdqwpdb-8000.inc1.devtunnels.ms/logout",
+      `${serv_addr}/logout`,
       {
         method: "POST",
         headers: {
@@ -31,6 +32,7 @@ function Index(props) {
       document.cookie = `ProfileInfo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname};`;
       window.location.href = "/";
     } else {
+      console.log(response.status)
       alert("Do again");
     }
   };

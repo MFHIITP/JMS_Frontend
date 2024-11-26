@@ -11,6 +11,7 @@ function Register() {
     confirmPassword: "",
   });
   const [loading, setLoading] = useState(false);
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -32,7 +33,7 @@ function Register() {
 
     try {
       const response = await fetch(
-        "https://nvdqwpdb-8000.inc1.devtunnels.ms/users/signup",
+        `${serv_addr}/users/signup`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

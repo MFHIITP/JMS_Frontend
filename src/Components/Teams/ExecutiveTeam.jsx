@@ -10,11 +10,12 @@ function ExecutiveTeam(props) {
   const [Degree, setDegree] = useState("");
   const [linkedIn, setLinkedIn] = useState("");
   const {adminemails} = useContext(MyContext);
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
 
   useEffect(() => {
     const devteamcall = async () => {
       const response = await fetch(
-        "https://nvdqwpdb-8000.inc1.devtunnels.ms/executiveteam/getexecutiveteamdata",
+        `${serv_addr}/executiveteam/getexecutiveteamdata`,
         {
           method: "GET",
           headers: {
@@ -28,7 +29,7 @@ function ExecutiveTeam(props) {
       setTeam(data);
     };
     devteamcall();
-  }, []);
+  }, [serv_addr]);
 
   const resetForm = () => {
     setPosition("");
@@ -41,7 +42,7 @@ function ExecutiveTeam(props) {
 
   const handleSubmit = async () => {
     const response = await fetch(
-      "https://nvdqwpdb-8000.inc1.devtunnels.ms/executiveteam/addexecutiveperson",
+      `${serv_addr}/executiveteam/addexecutiveperson`,
       {
         method: "POST",
         headers: {

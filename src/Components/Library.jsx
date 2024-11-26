@@ -9,10 +9,11 @@ function Library(props) {
   const [uploadStatus, setUploadStatus] = useState("");
   const { adminemails } = useContext(MyContext);
   const [books, setBooks] = useState([]);
+  const serve_addr = import.meta.env.VITE_SERV_ADDR
 
   useEffect(() => {
     const getbooks = async () => {
-      const response = await fetch('https://nvdqwpdb-8000.inc1.devtunnels.ms/library/books', {
+      const response = await fetch(`${serve_addr}/library/books`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -22,7 +23,7 @@ function Library(props) {
       setBooks(data); // Ensure to set the fetched books in state
     };
     getbooks();
-  }, []);
+  }, [serve_addr]);
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
@@ -42,7 +43,7 @@ function Library(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const cloudinaryUrl = "https://api.cloudinary.com/v1_1/dmr09pu10/raw/upload";
+    const cloudinaryUrl = `https://api.cloudinary.com/v1_1/dmr09pu10/raw/upload`;
     if (pdfFile && title && Author) {
       let bookurl;
       const formData = new FormData();
@@ -68,7 +69,7 @@ function Library(props) {
         return;
       }
 
-      const response = await fetch('https://nvdqwpdb-8000.inc1.devtunnels.ms/library/books', {
+      const response = await fetch(`${serve_addr}/library/books`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

@@ -8,10 +8,11 @@ const UsersTable = (props) => {
   const [loading, setLoading] = useState(true);
   const {adminemails} = useContext(MyContext);
   const {executives} = useContext(MyContext);
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
 
   useEffect(() => {
     axios
-      .get("https://nvdqwpdb-8000.inc1.devtunnels.ms/users/admins")
+      .get(`${serv_addr}/users/admins`)
       .then(
         (response) => {
           console.log(response.data.data);
@@ -24,12 +25,12 @@ const UsersTable = (props) => {
         console.error("Error fetching users:", error);
         setLoading(false);
       });
-  }, []);
+  }, [serv_addr]);
 
   const deleteaccount = async (id) => {
     alert("Do you want to remove this person ?");
     const response = await fetch(
-      "https://nvdqwpdb-8000.inc1.devtunnels.ms/users/deleteuser",
+      `${serv_addr}/users/deleteuser`,
       {
         method: "POST",
         headers: {

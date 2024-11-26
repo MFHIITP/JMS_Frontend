@@ -10,11 +10,12 @@ function ContentTeam(props) {
   const [Degree, setDegree] = useState("");
   const [linkedIn, setLinkedIn] = useState("");
   const {adminemails} = useContext(MyContext);
+  const serv_addr = import.meta.env.VITE_SERV_ADDR
 
   useEffect(() => {
     const devteamcall = async () => {
       const response = await fetch(
-        "https://nvdqwpdb-8000.inc1.devtunnels.ms/contentteam/getcontentteamdata",
+        `${serv_addr}/contentteam/getcontentteamdata`,
         {
           method: "GET",
           headers: {
@@ -28,7 +29,7 @@ function ContentTeam(props) {
       data.sort((a, b) => {return priorityOrder.indexOf(a.position) - priorityOrder.indexOf(b.position)});
     };
     devteamcall();
-  }, []);
+  }, [serv_addr]);
 
   const resetForm = () => {
     setPosition("");
@@ -41,7 +42,7 @@ function ContentTeam(props) {
 
   const handleSubmit = async () => {
     const response = await fetch(
-      "https://nvdqwpdb-8000.inc1.devtunnels.ms/contentteam/addcontentperson",
+      `${serv_addr}/contentteam/addcontentperson`,
       {
         method: "POST",
         headers: {
