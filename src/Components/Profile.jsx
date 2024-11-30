@@ -20,7 +20,7 @@ function Profile(props) {
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json", 
         },
         body: JSON.stringify({
           email: props.details.email,
@@ -34,7 +34,7 @@ function Profile(props) {
       const data = await response.json();
       document.cookie = `ProfileInfo=${encodeURIComponent(
         "j:" + JSON.stringify(data.profileinfo)
-      )}; path=/; domain=${window.location.hostname}; secure=false; sameSite=none;`
+      )}; path=/; domain=${window.location.hostname}; secure=true; sameSite=None;`
       window.location.reload();
     } else {
       console.log("Internal Server Error");

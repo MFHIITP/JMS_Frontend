@@ -43,6 +43,8 @@ const FetchAndDisplayData = (props) => {
               <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Name</th>
               <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Email</th>
               <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">In Time</th>
+              <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">User Device</th>
+              <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">User Details</th>
             </tr>
           </thead>
           <tbody>
@@ -51,6 +53,8 @@ const FetchAndDisplayData = (props) => {
                 <td className="px-4 py-2 text-sm text-gray-600">{item.name}</td>
                 <td className="px-4 py-2 text-sm text-gray-600">{item.email_id}</td>
                 <td className="px-4 py-2 text-sm text-gray-600">{item.createdAt}</td>
+                <td className="px-4 py-2 text-sm text-gray-600">{item.details}</td>
+                <td className="px-4 py-2 text-sm text-gray-600">{item.locations}</td>
               </tr>
             ))}
           </tbody>

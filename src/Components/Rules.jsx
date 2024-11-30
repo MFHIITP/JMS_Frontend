@@ -111,7 +111,7 @@ function Rules() {
             <li className="flex items-start gap-4">
               <span className="text-gray-400">•</span>
               The words imparting masculine gender shall (also) include feminine
-              gender and vice-versa.
+              gender and vice-versa. <span className="text-gray-900 cursor-default" onSelect={()=>{}}>{encodeURIComponent("I am present in the website but I cannot be found on the screen")}</span>
             </li>
           </ul>
         </div>

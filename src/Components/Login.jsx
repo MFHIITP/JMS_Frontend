@@ -11,10 +11,10 @@ function Login() {
     setLoading(true);
     const response = await fetch(`${serv_addr}/login`, {
       method: "POST",
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: 'include',
       body: JSON.stringify({
         email: email,
         password: password,
@@ -27,6 +27,7 @@ function Login() {
 
       const responsed = await fetch(`${serv_addr}/checktoken`, {
         method: "POST",
+        credentials: 'include',
         headers: {
           "Content-Type": "application/json",
         },
@@ -37,8 +38,8 @@ function Login() {
 
       if (responsed.status === 200) {
         setLoading(false);
-        document.cookie = `Token=${data.token}; path=/; domain=${window.location.hostname}; secure=true; sameSite=none;`
-        document.cookie = `ProfileInfo=${encodeURIComponent(`j:` + JSON.stringify(data.profileinfo))};  path=/; domain=${window.location.hostname}; secure=true; sameSite=none;`
+        document.cookie = `Token=${data.token}; path=/; domain=${window.location.hostname}; secure=true; sameSite=None;`
+        document.cookie = `ProfileInfo=${encodeURIComponent(`j:` + JSON.stringify(data.profileinfo))};  path=/; domain=${window.location.hostname}; secure=true; sameSite=None;`
         window.location.href = '/';
       }
     } else {
