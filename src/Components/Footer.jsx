@@ -5,7 +5,7 @@ import Popping from "./Popping";
 function Footer() {
   return (
     <>
-    <Popping><div className="container mx-auto grid grid-cols-1 gap-8 px-4 md:px-20 text-white my-16">
+      <Popping><div className="container mx-auto grid grid-cols-1 gap-8 px-4 md:px-20 text-white my-16">
         {/* About Us Section */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
           <h1 className="underline underline-offset-4 text-2xl font-semibold pb-6">
@@ -28,30 +28,30 @@ function Footer() {
             <div className="flex flex-col gap-6 lg:flex-row lg:gap-8">
               {/* First Location Map */}
               <div className="text-blue-300 text-sm font-mono">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.166642140593!2d88.3782756750754!3d22.4979300795449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02713f37a6102d%3A0x4d17af8ca1c5acc1!2sJadavpur%20University%20Campus%20Area%2C%20Kolkata%2C%20West%20Bengal%20700075!5e0!3m2!1sen!2sin!4v1728911578723!5m2!1sen!2sin"
-                width="300"
-                height="200"
-                className="border-0 rounded-lg shadow-lg"
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-              Jadavpur University Jadavpur Campus
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.166642140593!2d88.3782756750754!3d22.4979300795449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02713f37a6102d%3A0x4d17af8ca1c5acc1!2sJadavpur%20University%20Campus%20Area%2C%20Kolkata%2C%20West%20Bengal%20700075!5e0!3m2!1sen!2sin!4v1728911578723!5m2!1sen!2sin"
+                  width="300"
+                  height="200"
+                  className="border-0 rounded-lg shadow-lg"
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+                Jadavpur University Jadavpur Campus
               </div>
 
               {/* Second Location Map */}
               <div className="text-blue-300 text-sm font-mono">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.499068084821!2d88.41105557507734!3d22.560430279500373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02743203255595%3A0x9c37b30c00660fab!2sJadavpur%20University%2C%20Salt%20Lake%20Campus!5e0!3m2!1sen!2sin!4v1728911830493!5m2!1sen!2sin"
-                width="300"
-                height="200"
-                className="border-0 rounded-lg shadow-lg"
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-              Jadavpur University Salt Lake Campus
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.499068084821!2d88.41105557507734!3d22.560430279500373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02743203255595%3A0x9c37b30c00660fab!2sJadavpur%20University%2C%20Salt%20Lake%20Campus!5e0!3m2!1sen!2sin!4v1728911830493!5m2!1sen!2sin"
+                  width="300"
+                  height="200"
+                  className="border-0 rounded-lg shadow-lg"
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+                Jadavpur University Salt Lake Campus
               </div>
             </div>
             <div className="text-lg flex gap-4 font-mono"><div>Phone :</div> <div className="transition-transform cursor-pointer hover:scale-110">+91 12345 67890</div></div>
@@ -124,7 +124,7 @@ function Footer() {
       {/* Footer Bottom */}
       <hr className="w-4/5 mx-auto border-t border-gray-700 my-6" />
       <Popping><div className="text-white text-center">
-        <div className="flex items-center justify-center my-6">
+        <div className="flex flex-col sm:flex-row items-center justify-center my-6">
           <img
             src="../../Images/JMS_Logo(1).png"
             alt="Company Logo"
