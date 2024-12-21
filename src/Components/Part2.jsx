@@ -37,13 +37,13 @@ function Part2() {
       <Popping>
         <div className="flex flex-col gap-16 py-16 bg-gray-900 px-10 rounded-lg">
           {/* Regular Contests */}
-          <div className="flex flex-row items-center mx-24 gap-20 p-8 rounded-lg shadow-lg bg-white hover:shadow-xl transition duration-300 ease-in-out">
-            <div className="w-[40%] relative">
+          <div className="flex flex-col sm:flex-row items-center sm:mx-24 gap-8 sm:gap-20 p-8 rounded-lg shadow-lg bg-white hover:shadow-xl transition duration-300 ease-in-out">
+            <div className="sm:w-[40%] relative">
               <div className="text-4xl font-mono font-bold text-blue-600">
                 Regular Contests
               </div>
             </div>
-            <div className="w-[60%] font-mono text-gray-700">
+            <div className="sm:w-[60%] font-mono text-gray-700">
               Ignite Your Passion, join Our Exciting Contests! Unleash your
               creativity and compete with peers! From hackathons to debates,
               there’s a challenge waiting for everyone. Get ready to showcase
@@ -52,14 +52,14 @@ function Part2() {
           </div>
 
           {/* Mentorship Facilities */}
-          <div className="flex flex-row items-center mx-24 gap-20 p-8 rounded-lg shadow-lg bg-white hover:shadow-xl transition duration-300 ease-in-out">
-            <div className="w-[60%] font-mono text-gray-700">
+          <div className="flex flex-col-reverse sm:flex-row items-center sm:mx-24 gap-8 sm:gap-20 p-8 rounded-lg shadow-lg bg-white hover:shadow-xl transition duration-300 ease-in-out">
+            <div className="sm:w-[60%] font-mono text-gray-700">
               Guided by Experience, unlock Your Potential! Connect with seasoned
               mentors who are here to nurture your talent and help you navigate
               your journey. Gain invaluable insights and grow both personally
               and professionally.
             </div>
-            <div className="w-[40%] relative">
+            <div className="sm:w-[40%] relative">
               <div className="text-4xl font-mono font-bold text-blue-600">
                 Mentorship Facilities
               </div>
@@ -67,13 +67,13 @@ function Part2() {
           </div>
 
           {/* Events and Workshops */}
-          <div className="flex flex-row items-center mx-24 gap-20 p-8 rounded-lg shadow-lg bg-white hover:shadow-xl transition duration-300 ease-in-out">
-            <div className="w-[40%] relative">
+          <div className="flex flex-col sm:flex-row items-center sm:mx-24 gap-8 sm:gap-20 p-8 rounded-lg shadow-lg bg-white hover:shadow-xl transition duration-300 ease-in-out">
+            <div className="sm:w-[40%] relative">
               <div className="text-4xl font-mono font-bold text-blue-600">
                 Events and Workshops
               </div>
             </div>
-            <div className="w-[60%] font-mono text-gray-700">
+            <div className="sm:w-[60%] font-mono text-gray-700">
               Learn, Engage, and Grow! Participate in dynamic workshops and
               events designed to enhance your skills and broaden your horizons.
               Join us for a transformative experience!
@@ -81,13 +81,13 @@ function Part2() {
           </div>
 
           {/* Community and Networking */}
-          <div className="flex flex-row items-center mx-24 gap-20 p-8 rounded-lg shadow-lg bg-white hover:shadow-xl transition duration-300 ease-in-out">
-            <div className="w-[60%] font-mono text-gray-700">
+          <div className="flex flex-col-reverse sm:flex-row items-center sm:mx-24 gap-8 sm:gap-20 p-8 rounded-lg shadow-lg bg-white hover:shadow-xl transition duration-300 ease-in-out">
+            <div className="sm:w-[60%] font-mono text-gray-700">
               Build Connections That Last! Join a vibrant community of
               like-minded individuals. Collaborate, share ideas, and build
               lifelong friendships that will enrich your college experience.
             </div>
-            <div className="w-[40%] relative">
+            <div className="sm:w-[40%] relative">
               <div className="text-4xl font-mono font-bold text-blue-600">
                 Community and Networking
               </div>
@@ -95,13 +95,13 @@ function Part2() {
           </div>
 
           {/* Join Us */}
-          <div className="flex flex-row items-center mx-24 gap-20 p-8 rounded-lg shadow-lg bg-white hover:shadow-xl transition duration-300 ease-in-out">
-            <div className="w-[40%] relative">
+          <div className="flex flex-col sm:flex-row items-center sm:mx-24 gap-8 sm:gap-20 p-8 rounded-lg shadow-lg bg-white hover:shadow-xl transition duration-300 ease-in-out">
+            <div className="sm:w-[40%] relative">
               <div className="text-4xl font-mono font-bold text-blue-600">
                 Join Us
               </div>
             </div>
-            <div className="w-[60%] font-mono text-gray-700">
+            <div className="sm:w-[60%] font-mono text-gray-700">
               Be Part of Something Bigger! Ready to make an impact? Join our
               society and be part of a journey filled with growth, learning, and
               unforgettable memories!
