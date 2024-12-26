@@ -1,5 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {Toaster} from 'react-hot-toast'
 import "./App.css";
 
 const Footer = lazy(() => import("./Components/Footer"));
@@ -342,6 +343,7 @@ function App() {
 
   return (
     <div className="relative bg-black">
+      <Toaster/>
       <div className="sticky top-0 left-0 z-20">
         <Suspense>
           <Index auth={authenticated} details={details} />

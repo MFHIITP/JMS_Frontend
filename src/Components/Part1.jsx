@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import toast from "react-hot-toast";
 
 function Part1() {
+  useEffect(() => {
+    if(localStorage.length == 1){
+      const value = localStorage.getItem('toast_message')
+      toast.success(value)
+      localStorage.clear()
+    }
+  }, [])
+  
+
   return (
     <div className="relative w-full">
       <div className="relative">

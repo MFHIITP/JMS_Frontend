@@ -42,6 +42,7 @@ function Profile(props) {
   };
 
   const handleremove = async () => {
+    alert("You sure you want to leave?")
     const response = await fetch(
       `${serv_addr}/removeprofile`,
       {
@@ -50,7 +51,7 @@ function Profile(props) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: details.email,
+          email: props.details.email,
         }),
       }
     );

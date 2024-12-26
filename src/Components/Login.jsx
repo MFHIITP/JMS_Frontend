@@ -1,62 +1,78 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const serv_addr = import.meta.env.VITE_SERV_ADDR
+  const serv_addr = import.meta.env.VITE_SERV_ADDR;
+
+  useEffect(() => {
+    if(localStorage.getItem('registration_message')){
+      toast.success(localStorage.getItem('registration_message'), {
+        icon: '🎉'
+      })
+      localStorage.clear()
+    }
+  }, [])
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
     const response = await fetch(`${serv_addr}/login`, {
       method: "POST",
-      credentials: 'include',
+      credentials: "include",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: email,
         password: password,
-      })
+      }),
     });
-
+    console.log(response.status);
     if (response.status === 200) {
       const data = await response.json();
       const token = data.token;
 
       const responsed = await fetch(`${serv_addr}/checktoken`, {
         method: "POST",
-        credentials: 'include',
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           token: token,
-        })
+        }),
       });
 
       if (responsed.status === 200) {
         setLoading(false);
-        document.cookie = `Token=${data.token}; path=/; domain=${window.location.hostname}; secure=true; sameSite=None;`
-        document.cookie = `ProfileInfo=${encodeURIComponent(`j:` + JSON.stringify(data.profileinfo))};  path=/; domain=${window.location.hostname}; secure=true; sameSite=None;`
-        window.location.href = '/';
+        document.cookie = `Token=${data.token}; path=/; domain=${window.location.hostname}; secure=true; sameSite=None;`;
+        document.cookie = `ProfileInfo=${encodeURIComponent(`j:` + JSON.stringify(data.profileinfo))};  path=/; domain=${window.location.hostname}; secure=true; sameSite=None;`;
+        localStorage.setItem('toast_message', `Login Successful!  Welcome ${data.profileinfo.name}`)
+        window.location.href = '/'
       }
     } else {
       setLoading(false);
-      setEmail('')
-      setPassword('')
+      setEmail("");
+      setPassword("");
       const data = await response.json();
-      alert(data.message);
+      toast.error(data.message, { duration: 3000 });
     }
   };
 
   return (
     <div
-      className={`flex items-center justify-center py-12 bg-gray-100 ${loading ? 'cursor-progress' : 'cursor-auto'}`}
+      className={`flex items-center justify-center py-12 bg-gray-100 ${
+        loading ? "cursor-progress" : "cursor-auto"
+      }`}
     >
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold text-center text-gray-800 font-serif">Jadavpur Maths Society Login</h2>
+        <h2 className="text-2xl font-semibold text-center text-gray-800 font-serif">
+          Jadavpur Maths Society Login
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="email" className="block mb-2 text-sm text-gray-600">
@@ -72,7 +88,10 @@ function Login() {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block mb-2 text-sm text-gray-600">
+            <label
+              htmlFor="password"
+              className="block mb-2 text-sm text-gray-600"
+            >
               Password
             </label>
             <input
@@ -87,17 +106,21 @@ function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 font-serif font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+            className={`w-full py-2 font-serif font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 ${loading ? 'cursor-wait' : 'cursor-pointer'}`}
           >
-            Login
+            {loading == true ? <>Logging...</> : <>Login</>}
           </button>
         </form>
         <div className="text-center mt-4">
           <p className="text-md font-serif font-semibold text-gray-600">
-            Not signed up?{' '}
-            <a href="/register" className="text-blue-500 hover:underline text-md font-serif font-semibold">
+            Not signed up?{" "}
+            <a
+              href="/register"
+              className="text-blue-500 hover:underline text-md font-serif font-semibold"
+            >
               Register
-            </a>.
+            </a>
+            .
           </p>
         </div>
       </div>

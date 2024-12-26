@@ -3,12 +3,14 @@ import Avatar from "@mui/material/Avatar";
 import { MyContext } from "../main";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
+import toast from "react-hot-toast";
 
 function Index(props) {
   var name = props.details.name;
   if (name != undefined) {
     name = name[0];
   }
+  const [disabled, setDisabled] = useState(false)
   const [navOpen, setNavOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [librarydrop, setLibrarydrop] = useState(false);
@@ -18,9 +20,8 @@ function Index(props) {
   const serv_addr = import.meta.env.VITE_SERV_ADDR
 
   const handleLogout = async () => {
-    const response = await fetch(
-      `${serv_addr}/logout`,
-      {
+    setDisabled(true)
+    const response = await fetch(`${serv_addr}/logout`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,10 +34,12 @@ function Index(props) {
     if (response.status == 200) {
       document.cookie = `Token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname};`;
       document.cookie = `ProfileInfo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname};`;
-      window.location.href = "/";
+      localStorage.setItem('toast_message', 'Logout Successful!')
+      setDisabled(false)
+      window.location.href = '/'
     } else {
-      console.log(response.status)
-      alert("Do again");
+      setDisabled(false)
+      toast.error("Do Again")
     }
   };
 
@@ -286,13 +289,14 @@ function Index(props) {
           >
             <a href="/login">Login</a>
           </div>
-          <div
-            className={`cursor-pointer px-4 py-2 rounded-md border border-transparent text-red-500 border-red-500 transition-all duration-300 hover:shadow-md hover:border-red-700 hover:scale-110 font-serif ${props.auth ? "" : "hidden"
+          <button
+            className={`${disabled ? 'cursor-wait' : 'cursor-pointer'} px-4 py-2 rounded-md border border-transparent text-red-500 border-red-500 transition-all duration-300 hover:shadow-md hover:border-red-700 hover:scale-110 font-serif ${props.auth ? "" : "hidden"
               }`}
             onClick={handleLogout}
+            disabled = {disabled}
           >
             Logout
-          </div>
+          </button>
         </div>
       </div>
 

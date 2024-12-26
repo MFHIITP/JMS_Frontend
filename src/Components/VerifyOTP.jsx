@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 function Otpverify() {
+  const emailRef = useRef(null)
   const [otp, setOtp] = useState("");
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false)
@@ -18,6 +19,8 @@ function Otpverify() {
       }
     };
     output();
+
+    emailRef.current?.focus()
   }, []);
 
   const handleSubmit = async (event) => {
@@ -40,11 +43,11 @@ function Otpverify() {
       }
       localStorage.clear();
       setLoading(false)
+      localStorage.setItem('registration_message', 'Successfully Registered')
       window.location.href = "/login";
     } catch (error) {
       localStorage.clear();
       alert("Incorrect OTP Provided.");
-      console.log("Incorrect")
       setLoading(false);
       window.location.href = "/register"
     }
@@ -58,6 +61,7 @@ function Otpverify() {
           <div>
             <label htmlFor="otp" className="block text-gray-700 font-semibold mb-2">Enter OTP:</label>
             <input
+              ref={emailRef}
               type="text"
               id="otp"
               value={otp}
